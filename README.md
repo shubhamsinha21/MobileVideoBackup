@@ -113,12 +113,11 @@ This project is a **feasibility spike** to validate whether a **mobile web app**
 
 ## Folder Structure
 
-video-spike/
-├── index.html     # Main HTML file
-├── style.css      # Minimal styling
-├── app.js         # JavaScript logic (camera, recording, IndexedDB, upload)
-└── README.md      # Project explanation
-
+video-spike (folder)
+- index.html     # Main HTML file
+- style.css      # Minimal styling
+- app.js         # JavaScript logic (camera, recording, IndexedDB upload)
+- README.md      # Project explanation
 
 ---
 
