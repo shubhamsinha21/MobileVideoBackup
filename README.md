@@ -47,3 +47,89 @@ This project is a **feasibility spike** to validate whether a **mobile web app**
 > IndexedDB behavior may differ slightly across platforms, but **core persistence works reliably** on most mobile browsers.
 
 ---
+
+## How to Use
+
+1. Open the app on a **mobile browser** (Android Chrome recommended).
+2. Allow camera and microphone access when prompted.
+3. Click **Start Recording** to record a video.
+4. Click **Stop Recording** to finish.
+5. The recorded video will appear in the **Saved Video** section immediately.
+6. Click **Upload (Mock)** to simulate upload (this will fail intentionally).
+7. Refresh the page — the video persists.
+8. Optional: Click **Delete Old Video** to remove previous recording before recording a new one.
+
+---
+
+## Tech Stack / APIs Used
+
+- **Frontend**: HTML, CSS, Vanilla JavaScript
+- **Browser APIs**:
+  - `navigator.mediaDevices.getUserMedia()` → Camera + audio
+  - `MediaRecorder` → Video recording
+  - `IndexedDB` → Local storage of video blob
+  - `fetch()` → Mock upload simulation
+
+> No backend required for this spike. Upload endpoint is intentionally mocked (`example.com`).
+
+---
+
+## Success Criteria (Assignment Requirements)
+
+| Requirement                                                        | Status |
+|------------------------------------------------------------------|--------|
+| Video recorded in mobile browser                                   | ✅     |
+| Video saved locally (survives refresh / upload failure)           | ✅     |
+| Upload is attempted (mock)                                        | ✅     |
+| Video still present after failed upload and refresh                | ✅     |
+| Basic UI to demonstrate functionality                              | ✅     |
+
+---
+
+## How It Was Tested
+
+- **Mobile device**: Android Chrome (main), iOS Safari (optional)
+- **Scenario 1**: Record video → stop → video visible immediately → upload fails → refresh → video still exists ✅
+- **Scenario 2**: Record new video → old video deleted automatically → new video appears ✅
+- **Scenario 3**: Delete button clears video → fresh recording possible ✅
+
+---
+
+## Viability for Long-Term / Production
+
+- This approach is feasible for **offline-first web apps** or **progressive web apps (PWA)**.
+- **Pros**:
+  - No native app needed
+  - Offline persistence
+  - Automatic handling of upload failures
+- **Cons / Limitations**:
+  - iOS storage may be purged by the OS
+  - No background upload or queue management
+  - Limited UI/UX for production use
+
+> For production, a backend service + PWA enhancements would be needed.
+
+---
+
+## Folder Structure
+
+video-spike/
+├── index.html # Main HTML file
+├── style.css # Minimal styling
+├── app.js # JavaScript logic (camera, recording, IndexedDB, upload)
+└── README.md # This explanation
+
+
+---
+
+## Notes for Reviewers
+
+- **Upload is mocked intentionally**; focus is on **local persistence and handling failures**.
+- The spike demonstrates that **mobile browsers can record and persist video locally** without losing it.
+- This is sufficient to meet the **assignment objective**.
+
+---
+
+## Author
+
+- Shubham Sinha
