@@ -170,6 +170,21 @@ uploadBtn.addEventListener("click", async () => {
   }
 });
 
+/* Step-7: DELETE OLD VIDEO  */
+
+if (deleteBtn) {
+  deleteBtn.addEventListener("click", () => {
+    if (!db) return;
+    const tx = db.transaction("videos", "readwrite");
+    const store = tx.objectStore("videos");
+    store.delete("latest-video");
+    savedVideo.src = "";          // Remove video from UI
+    uploadBtn.disabled = true;    // Disable upload
+    alert("Old video deleted. You can now record a fresh one.");
+  });
+}
+
+
 
 /* INIT CALL */
 initCamera();
