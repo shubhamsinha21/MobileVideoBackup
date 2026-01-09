@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: #f6f7f9;
+  color: #222;
+}
+
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+video {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+h3 {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.note {
+  font-size: 12px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#deleteBtn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #ef4444;  /* red for delete */
+  color: #fff;
+}
+
