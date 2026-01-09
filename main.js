@@ -65,6 +65,7 @@ async function initCamera() {
   }
 }
 
+
 /* Step-2: RECORDING CONTROLS --------------------------> */
 
 // auto-delete old video when starting a new recording
@@ -86,3 +87,46 @@ stopBtn.addEventListener("click", () => {
   startBtn.disabled = false;
   stopBtn.disabled = true;
 });
+
+
+
+/* Step-3: LOCAL PERSISTENT STORAGE (INDEXED DB) -----------------------> */
+
+// open or create IndexedDB
+const request = indexedDB.open("videoRecordingDB", 1);
+
+// runs only once when DB is created or version changes
+request.onupgradeneeded = (event) => {
+  db = event.target.result;
+
+  // object store to hold video blobs
+  db.createObjectStore("videos", { keyPath: "id" });
+};
+
+// DB ready
+request.onsuccess = (event) => {
+  db = event.target.result;
+
+  // load previously saved video on page load
+  loadSavedVideoFromIndexedDB();
+};
+
+// error handling
+request.onerror = () => {
+  console.error("IndexedDB failed to open");
+};
+
+/* Step-4:  SAVE VIDEO LOCALLY --------------------------->  */
+
+function saveVideoToIndexedDB(videoBlob) {
+  if (!db) return;
+  const tx = db.transaction("videos", "readwrite");
+  const store = tx.objectStore("videos");
+
+  // Overwrite latest video
+  store.put({
+    id: "latest-video",
+    blob: videoBlob,
+    savedAt: Date.now(),
+  });
+}
