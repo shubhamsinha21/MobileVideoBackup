@@ -130,3 +130,22 @@ function saveVideoToIndexedDB(videoBlob) {
     savedAt: Date.now(),
   });
 }
+
+/* Step-5: LOAD SAVED VIDEO AFTER REFRESH OR REOPEN OR RELOAD  */
+
+function loadSavedVideoFromIndexedDB() {
+  if (!db) return;
+
+  const transaction = db.transaction("videos", "readonly");
+  const store = transaction.objectStore("videos");
+
+  const request = store.get("latest-video");
+
+  request.onsuccess = () => {
+    if (request.result) {
+      const videoURL = URL.createObjectURL(request.result.blob);
+      savedVideo.src = videoURL;
+      uploadBtn.disabled = false;
+    }
+  };
+}
