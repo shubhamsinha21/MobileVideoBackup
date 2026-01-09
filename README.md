@@ -1,5 +1,8 @@
 # Mobile Video Recording Feasibility Spike
 
+![Demo Video Screenshot](demo.png)
+
+
 ## Objective
 
 This project is a **feasibility spike** to validate whether a **mobile web app** can:
