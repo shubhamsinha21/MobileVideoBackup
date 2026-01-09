@@ -169,3 +169,7 @@ uploadBtn.addEventListener("click", async () => {
     );
   }
 });
+
+
+/* INIT CALL */
+initCamera();
