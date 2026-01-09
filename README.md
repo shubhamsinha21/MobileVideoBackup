@@ -1,7 +1,6 @@
 # Mobile Video Recording Feasibility Spike
 
-![Demo Video Screenshot](demo.png)
-
+<img src="demo.png" alt="Demo Video Screenshot" width="400"/>
 
 ## Objective
 
