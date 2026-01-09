@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Video Recording Spike</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h2>Video Recording Feasibility Spike</h2>
+    <p class="subtitle">
+      Record video → store locally → simulate upload failure → refresh & verify persistence
+    </p>
+
+    <!-- Live camera preview -->
+    <video id="preview" autoplay muted playsinline></video>
+
+    <!-- Action buttons -->
+    <div class="controls">
+      <button id="startBtn">Start Recording</button>
+      <button id="stopBtn" disabled>Stop Recording</button>
+      <button id="uploadBtn" disabled>Upload (Mock)</button>
+      <button id="deleteBtn">Delete Old Video</button>
+
+    </div>
+
+    <!-- Saved video playback -->
+    <h3>Saved Video (from local storage)</h3>
+    <video id="savedVideo" controls></video>
+
+    <p class="note">
+      Tip: Refresh the page after upload failure. The video should still be here.
+    </p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
