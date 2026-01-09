@@ -131,6 +131,7 @@ function saveVideoToIndexedDB(videoBlob) {
   });
 }
 
+
 /* Step-5: LOAD SAVED VIDEO AFTER REFRESH OR REOPEN OR RELOAD  */
 
 function loadSavedVideoFromIndexedDB() {
@@ -149,3 +150,22 @@ function loadSavedVideoFromIndexedDB() {
     }
   };
 }
+
+
+/* Step-6: MOCK UPLOAD (INTENTIONALLY FAILS) */
+
+uploadBtn.addEventListener("click", async () => {
+  alert("Uploading video... (this will fail)");
+
+  try {
+    // fake upload endpoint
+    await fetch("https://example.com/upload", {
+      method: "POST",
+      body: recordedVideoBlob,
+    });
+  } catch (error) {
+    alert(
+      "Upload failed.\n\nVideo is still stored locally and will survive refresh."
+    );
+  }
+});
